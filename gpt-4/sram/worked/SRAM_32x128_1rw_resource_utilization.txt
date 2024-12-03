@@ -1,0 +1,10 @@
+Resource Utilization for sram_HT3_gpt-4_A1.v (Top Module: SRAM_32x128_1rw):
+Constraint File: C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc
+======================================
+
+Slice LUTs*: 6
+Slice Registers: 45
+DSPs: 0
+RAMB36/FIFO*: 0
+RAMB18: 1
+Bonded IOB: 74

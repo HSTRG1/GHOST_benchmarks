@@ -1,0 +1,36 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Aug  6 05:19:05 2024
+# Process ID: 11240
+# Current directory: C:/Users/write/Downloads/llm_HT_test/vulnerable_designs/gpt-4/sram/worked
+# Command line: vivado.exe -mode batch -source C:\Users\write\AppData\Local\Temp\tmpp9s_3iqa.tcl -tclargs C:\Users\write\Downloads\llm_HT_test\vulnerable_designs\gpt-4\sram\worked\sram.v uart_rx C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc
+# Log file: C:/Users/write/Downloads/llm_HT_test/vulnerable_designs/gpt-4/sram/worked/vivado.log
+# Journal file: C:/Users/write/Downloads/llm_HT_test/vulnerable_designs/gpt-4/sram/worked\vivado.jou
+#-----------------------------------------------------------
+source {C:\Users\write\AppData\Local\Temp\tmpp9s_3iqa.tcl}
+# set verilog_file [lindex $argv 0]
+# set top_module [lindex $argv 1]
+# set constraint_file [lindex $argv 2]
+# create_project -force project_1 ./project_1 -part xc7z020clg400-1
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'C:/Users/write/Downloads/llm_HT_test/vulnerable_designs/gpt-4/sram/worked/project_1'
+# add_files $verilog_file
+# if {$constraint_file != ""} {
+#     add_files -fileset constrs_1 $constraint_file
+# }
+# set_property top $top_module [current_fileset]
+# synth_design -top $top_module
+Command: synth_design -top uart_rx
+Starting synth_design
+Using part: xc7z020clg400-1
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Synthesis
+3 Infos, 0 Warnings, 0 Critical Warnings and 1 Errors encountered.
+synth_design failed
+INFO: [Common 17-344] 'synth_design' was cancelled
+INFO: [Common 17-344] 'source' was cancelled
+INFO: [Common 17-206] Exiting Vivado at Tue Aug  6 05:19:12 2024...

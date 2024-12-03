@@ -1,0 +1,5 @@
+File Name,Top Module,Constraint File,Slice LUTs*,Slice Registers,DSPs,RAMB36/FIFO*,RAMB18,Bonded IOB,,total
+aes_128.v,aes_128,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,4368,4420,0,0,140,385,,9313
+aes_128_HT1_gpt-4_A1.v,aes_128,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,4320,4420,0,0,140,386,,9266
+aes_128_HT2_gpt-4_A1.v,aes_128,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,4368,4548,0,0,140,515,,9571
+aes_128_HT3_gpt-4_A1.v,aes_128,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,4395,4452,0,0,140,386,,9373

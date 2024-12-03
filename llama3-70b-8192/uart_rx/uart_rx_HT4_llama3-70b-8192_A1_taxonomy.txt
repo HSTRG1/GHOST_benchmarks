@@ -1,0 +1,21 @@
+Design: uart_rx.v
+Vulnerability ID: T4
+Model: llama3-70b-8192
+Attempts: 1
+
+Explanation:
+The Trojan was inserted as a continuously running shift register that increases power consumption without affecting the primary functionality of the UART receiver module. The Trojan is activated when the UART receive enable (uart_rx_en) is high, and the shift register continuously shifts the uart_rxd input, increasing power consumption.
+
+Trigger:
+The Trojan is not explicitly triggered, but rather it is always active when the module is powered on and not in reset
+
+Payload:
+The payload of the Trojan is the continuously running shift register, which increases power consumption without affecting the primary functionality of the UART receiver module.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Always-on (when powered and not in reset)
+Effects: Performance degradation
+Location: I/O (UART receiver)
+Characteristics: Functional, distribution: Localized, size: Small

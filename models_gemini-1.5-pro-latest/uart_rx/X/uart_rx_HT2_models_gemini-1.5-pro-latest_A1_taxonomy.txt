@@ -1,0 +1,27 @@
+Design: uart_rx.v
+Vulnerability ID: T2
+Model: models_gemini-1.5-pro-latest
+Attempts: 1
+
+Explanation:
+The Trojan is inserted by adding a leak counter and modifying the uart_rx_data output assignment. When triggered, the Trojan leaks internal cycle counter values instead of the received data for a set duration.
+
+Trigger:
+When specific data pattern is received
+    leak_counter <= 8'hFF;  // Activate leak for 255 cycles
+  end else if (leak_counter != 8'b0) begin
+    leak_counter <= leak_counter - 1'b1;
+  end
+end
+// *** TROJAN INSERTION END ***
+
+Payload:
+The Trojan leaks the 8 most significant bits of the internal cycle counter through the uart_rx_data output. This leaked information can be analyzed to infer timing information and potentially reveal internal states.
+
+Taxonomy:
+* **Insertion phase:** Design
+* **Abstraction level:** Register-transfer level
+* **Activation mechanism:** Triggered internally 
+* **Effects:** Leak information
+* **Location:** I/O
+* **Characteristics:** Distribution: Single, Size: Small, Type: Functional

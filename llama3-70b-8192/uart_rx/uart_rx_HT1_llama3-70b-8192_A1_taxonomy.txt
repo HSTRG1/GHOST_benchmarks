@@ -1,0 +1,21 @@
+Design: uart_rx.v
+Vulnerability ID: T1
+Model: llama3-70b-8192
+Attempts: 1
+
+Explanation:
+The Trojan was inserted by adding a counter (trojan_counter) that increments every clock cycle. When the counter reaches a specific value (4'b1111), the received data is altered by setting all bits to 1. This subtly changes the functionality of the UART receiver under specific conditions.
+
+Trigger:
+The Trojan is triggered when the trojan_counter reaches the value 8'b1111. This occurs after a certain number of clock cycles, which can be adjusted by modifying the initial value of the counter.
+
+Payload:
+The payload of the Trojan is the altered received data, which sets all bits to 1. This can cause incorrect data to be processed by the system, leading to potential security vulnerabilities.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered internally
+Effects: change functionality
+Location: UART receiver module
+Characteristics: Distribution: single instance, Size: small, Type: Functional

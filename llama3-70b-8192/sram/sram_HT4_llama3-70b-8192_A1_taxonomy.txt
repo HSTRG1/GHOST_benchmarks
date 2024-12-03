@@ -1,0 +1,25 @@
+Design: sram.v
+Vulnerability ID: T4
+Model: llama3-70b-8192
+Attempts: 1
+
+Explanation:
+**
+The Trojan was inserted as a 16-bit shift register that increments on every clock cycle, increasing power consumption without affecting the primary functionality of the SRAM. This Trojan will degrade the performance of the system over time.
+
+Trigger:
+**
+The Trojan is always active, incrementing the shift register on every clock cycle, and does not require a specific event or trigger to activate. The activation condition is simply the presence of clock signals.
+
+Payload:
+**
+The payload of the Trojan is the 16-bit shift register that increments continuously, increasing power consumption and degrading system performance over time.
+
+Taxonomy:
+**
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Always-on
+Effects: performance degradation
+Location: Memory
+Characteristics: Functional, Small size (16-bit register)

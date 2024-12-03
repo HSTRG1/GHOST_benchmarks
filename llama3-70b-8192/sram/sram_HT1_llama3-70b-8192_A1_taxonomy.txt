@@ -1,0 +1,25 @@
+Design: sram.v
+Vulnerability ID: T1
+Model: llama3-70b-8192
+Attempts: 1
+
+Explanation:
+**
+The Trojan was inserted in the MEM_READ0 always block, where it modifies the output data under specific conditions. The Trojan's presence is masked by the original functionality of the SRAM module.
+
+Trigger:
+**
+The Trojan is triggered when the internal counter `trojan_counter` reaches 10 and the address `addr0_reg` is equal to 16'h10. This specific combination of conditions is designed to be obscure and hard to detect.
+
+Payload:
+**
+The Trojan's payload is to modify the output data by adding 1 to the original value, resulting in incorrect results. This alteration is subtle and may not be immediately noticeable, making it difficult to detect.
+
+Taxonomy:
+**
+* Insertion phase: Design
+* Abstraction level: Register-transfer level
+* Activation mechanism: Triggered internally
+* Effects: change functionality
+* Location: Memory
+* Characteristics: Functional, Distribution: specific address and counter value

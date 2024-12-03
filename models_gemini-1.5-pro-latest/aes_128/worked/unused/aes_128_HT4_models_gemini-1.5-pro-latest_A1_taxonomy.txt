@@ -1,0 +1,31 @@
+Design: aes_128.v
+Vulnerability ID: T4
+Model: models_gemini-1.5-pro-latest
+Attempts: 1
+
+Explanation:
+A Trojan has been inserted that triggers a continuously running accumulator when a specific input state is detected. This accumulator consumes power without affecting the AES encryption functionality.
+
+Trigger:
+Activated when specific state value is encountered
+    wire trigger = (state == 128'h00112233445566778899aabbccddeeff);
+
+Payload:
+Continuously running accumulator 
+    reg [255:0] accumulator = 0; 
+    always @(posedge clk) begin
+        if (trigger) begin
+            accumulator <= accumulator + 256'd1; 
+        end
+    end
+
+Taxonomy:
+* **Insertion phase:** Design
+* **Abstraction level:** Register-transfer level
+* **Activation mechanism:** Triggered internally
+* **Effects:** Performance degradation (increased power consumption)
+* **Location:** Processor (within the AES module)
+* **Characteristics:** 
+    * **Distribution:** Localized (within the AES module)
+    * **Size:** Small (single accumulator)
+    * **Type:** Functional (power consumption degradation)

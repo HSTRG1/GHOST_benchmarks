@@ -1,0 +1,5 @@
+File Name,Top Module,Constraint File,Slice LUTs*,Slice Registers,DSPs,RAMB36/FIFO*,RAMB18,Bonded IOB,
+sram.v,SRAM_32x128_1rw,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,2,41,0,0,1,74,43
+sram_HT1_gpt-4_A1.v,SRAM_32x128_1rw,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,39,57,0,0,1,74,96
+sram_HT2_gpt-4_A1.v,SRAM_32x128_1rw,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,2,41,0,0,1,74,43
+sram_HT3_gpt-4_A1.v,SRAM_32x128_1rw,C:\Users\write\Downloads\HT_Research\vivado_report\Zybo-Z7-Master.xdc,6,45,0,0,1,74,51

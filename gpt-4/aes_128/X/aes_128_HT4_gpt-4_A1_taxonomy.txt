@@ -1,0 +1,21 @@
+Design: aes_128.v
+Vulnerability ID: T4
+Model: gpt-4
+Attempts: 1
+
+Explanation:
+A 32-bit shift register is inserted as a hardware Trojan that runs continuously when triggered, wasting system resources and increasing power consumption without affecting the primary functionality of the design.
+
+Trigger:
+The trigger is designed to activate when the `state` variable matches a specific 128-bit pattern (`DEADBEEFDEADBEEFDEADBEEFDEADBEEF`). Once this pattern is detected, the Trojan becomes operational and continues working until a reset command is given.
+
+Payload:
+The shift register implemented as the Trojan payload increases power consumption and potentially slowing down the system. The payload is designed such that the original operation of the design remains unaffected, thereby making Trojan detection difficult.
+
+Taxonomy:
+Insertion phase: Design
+Abstraction level: Register-transfer level
+Activation mechanism: Triggered externally
+Effects: Performance degradation
+Location: Processor
+Characteristics: Single distributed instance, small size, Parametric change.
