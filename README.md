@@ -76,7 +76,7 @@ Example: `HT120` = GPT-4, Type 3 HT, first attempt
 
 1. Clone repository:
 ```bash
-git clone https://github.com/your-org/ghost-ht-benchmarks.git
+git clone https://github.com/HSTRG1/GHOST_benchmarks.git
 ```
 
 2. Install requirements:
