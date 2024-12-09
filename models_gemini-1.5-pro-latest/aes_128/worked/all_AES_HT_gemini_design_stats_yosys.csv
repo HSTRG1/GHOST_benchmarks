@@ -1,0 +1,4 @@
+File Name,Top Module,LLM Model,HT Type,Total Cells
+aes_128_HT2_models_gemini-1.5-pro-latest_A1.v,aes_128,models,HT2,294352
+aes_128_HT3_models_gemini-1.5-pro-latest_A1.v,aes_128,models,HT3,294913
+aes_128_HT4_models_gemini-1.5-pro-latest_A1.v,aes_128,models,HT4,293840

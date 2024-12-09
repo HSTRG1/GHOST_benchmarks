@@ -1,0 +1,4 @@
+File Name,Top Module,LLM Model,HT Type,Total Cells
+aes_128_HT2_gpt-4_A1.v,aes_128,gpt-4,HT2,294352
+aes_128_HT1_gpt-4_A1.v,aes_128,gpt-4,HT1,293936
+aes_128_HT3_gpt-4_A1.v,aes_128,gpt-4,HT3,294236

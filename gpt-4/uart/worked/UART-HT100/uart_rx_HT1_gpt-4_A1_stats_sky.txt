@@ -1,0 +1,928 @@
+
+-- Running command `
+# Read the design
+read_verilog /home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v
+# Synthesize the design
+synth -top uart_rx
+
+# Read the liberty file
+read_liberty -lib /home/omar/research/skywater-pdk/libraries/sky130_fd_sc_hd/latest/timing/sky130_fd_sc_hd__tt_025C_1v80.lib
+# Map to specific cells
+abc -liberty /home/omar/research/skywater-pdk/libraries/sky130_fd_sc_hd/latest/timing/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Optimize it
+opt_clean -purge
+# Clean up
+clean
+# Generate netlist
+write_verilog -noattr /home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1_net.v
+# Show statistics
+stat
+' --
+
+1. Executing Verilog-2005 frontend: /home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v
+Parsing Verilog input from `/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v' to AST representation.
+Generating RTLIL representation for module `\uart_rx'.
+Successfully finished Verilog frontend.
+
+2. Executing SYNTH pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \uart_rx
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \uart_rx
+Removed 0 unused modules.
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:159$57 in module uart_rx.
+Marked 1 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:151$55 in module uart_rx.
+Marked 2 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:139$47 in module uart_rx.
+Marked 1 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:131$44 in module uart_rx.
+Marked 2 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:121$38 in module uart_rx.
+Marked 3 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:108$33 in module uart_rx.
+Marked 1 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:93$28 in module uart_rx.
+Marked 1 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:76$19 in module uart_rx.
+Marked 1 switch rules as full_case in process $proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:65$11 in module uart_rx.
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:107$59'.
+  Set init value: \i = 0
+
+2.2.4. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:107$59'.
+     1/1: $4\i[31:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:159$57'.
+     1/2: $0\rxd_reg_0[0:0]
+     2/2: $0\rxd_reg[0:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:151$55'.
+     1/1: $0\fsm_state[2:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:139$47'.
+     1/1: $0\cycle_counter[13:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:131$44'.
+     1/1: $0\bit_sample[0:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:121$38'.
+     1/1: $0\bit_counter[3:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:108$33'.
+     1/12: $3\i[31:0]
+     2/12: $0\received_data[7:0] [1]
+     3/12: $0\received_data[7:0] [0]
+     4/12: $0\received_data[7:0] [2]
+     5/12: $0\received_data[7:0] [3]
+     6/12: $0\received_data[7:0] [4]
+     7/12: $0\received_data[7:0] [5]
+     8/12: $0\received_data[7:0] [6]
+     9/12: $0\received_data[7:0] [7]
+    10/12: $1\i[31:0]
+    11/12: $0\i[31:0]
+    12/12: $2\i[31:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:93$28'.
+     1/2: $1\n_fsm_state[2:0]
+     2/2: $0\n_fsm_state[2:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:76$19'.
+     1/1: $0\uart_rx_data[7:0]
+Creating decoders for process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:65$11'.
+     1/1: $0\trojan_counter[15:0]
+
+2.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\uart_rx.\n_fsm_state' from process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:93$28'.
+
+2.2.7. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\uart_rx.\rxd_reg' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:159$57'.
+  created $dff cell `$procdff$198' with positive edge clock.
+Creating register for signal `\uart_rx.\rxd_reg_0' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:159$57'.
+  created $dff cell `$procdff$199' with positive edge clock.
+Creating register for signal `\uart_rx.\fsm_state' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:151$55'.
+  created $dff cell `$procdff$200' with positive edge clock.
+Creating register for signal `\uart_rx.\cycle_counter' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:139$47'.
+  created $dff cell `$procdff$201' with positive edge clock.
+Creating register for signal `\uart_rx.\bit_sample' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:131$44'.
+  created $dff cell `$procdff$202' with positive edge clock.
+Creating register for signal `\uart_rx.\bit_counter' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:121$38'.
+  created $dff cell `$procdff$203' with positive edge clock.
+Creating register for signal `\uart_rx.\received_data' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:108$33'.
+  created $dff cell `$procdff$204' with positive edge clock.
+Creating register for signal `\uart_rx.\i' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:108$33'.
+  created $dff cell `$procdff$205' with positive edge clock.
+Creating register for signal `\uart_rx.\uart_rx_data' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:76$19'.
+  created $dff cell `$procdff$206' with positive edge clock.
+Creating register for signal `\uart_rx.\trojan_counter' using process `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:65$11'.
+  created $dff cell `$procdff$207' with positive edge clock.
+
+2.2.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:107$59'.
+Found and cleaned up 2 empty switches in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:159$57'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:159$57'.
+Found and cleaned up 1 empty switch in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:151$55'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:151$55'.
+Found and cleaned up 3 empty switches in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:139$47'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:139$47'.
+Found and cleaned up 2 empty switches in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:131$44'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:131$44'.
+Found and cleaned up 3 empty switches in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:121$38'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:121$38'.
+Found and cleaned up 3 empty switches in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:108$33'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:108$33'.
+Found and cleaned up 1 empty switch in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:93$28'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:93$28'.
+Found and cleaned up 2 empty switches in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:76$19'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:76$19'.
+Found and cleaned up 1 empty switch in `\uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:65$11'.
+Removing empty process `uart_rx.$proc$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:65$11'.
+Cleaned up 18 empty switches.
+
+2.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+<suppressed ~22 debug messages>
+
+2.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 15 unused cells and 88 unused wires.
+<suppressed ~16 debug messages>
+
+2.5. Executing CHECK pass (checking for obvious problems).
+checking module uart_rx..
+found and reported 0 problems.
+
+2.6. Executing OPT pass (performing simple optimizations).
+
+2.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+<suppressed ~33 debug messages>
+Removed a total of 11 cells.
+
+2.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~17 debug messages>
+
+2.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_rx.
+    New input vector for $reduce_or cell $reduce_or$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:60$8: { \received_data [0] \received_data [1] \received_data [2] \received_data [3] \received_data [4] \received_data [5] \received_data [6] \received_data [7] }
+  Optimizing cells in module \uart_rx.
+Performed a total of 1 changes.
+
+2.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.6.6. Executing OPT_RMDFF pass (remove dff with constant values).
+Promoting init spec \i = 0 to constant driver in module uart_rx.
+Promoted 1 init specs to constant drivers.
+
+2.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 0 unused cells and 11 unused wires.
+<suppressed ~1 debug messages>
+
+2.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~17 debug messages>
+
+2.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_rx.
+Performed a total of 0 changes.
+
+2.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.6.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.6.16. Finished OPT passes. (There is nothing left to do.)
+
+2.7. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 14) from port B of cell uart_rx.$eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:88$22 ($eq).
+Removed top 31 bits (of 32) from mux cell uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:97$31 ($mux).
+Removed top 31 bits (of 32) from mux cell uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:95$29 ($mux).
+Removed top 2 bits (of 14) from port B of cell uart_rx.$eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:134$46 ($eq).
+Removed top 30 bits (of 32) from mux cell uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:96$30 ($mux).
+Removed top 30 bits (of 32) from mux cell uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:98$32 ($mux).
+Removed top 1 bits (of 3) from port B of cell uart_rx.$eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:113$36 ($eq).
+Removed top 1 bits (of 3) from port B of cell uart_rx.$ne$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:124$40 ($ne).
+Removed top 2 bits (of 3) from port B of cell uart_rx.$eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:144$49 ($eq).
+Removed top 1 bits (of 3) from port B of cell uart_rx.$eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:146$52 ($eq).
+Removed top 1 bits (of 3) from mux cell uart_rx.$procmux$185 ($pmux).
+Removed top 31 bits (of 32) from wire uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:95$29_Y.
+Removed top 30 bits (of 32) from wire uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:96$30_Y.
+Removed top 30 bits (of 32) from wire uart_rx.$ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:98$32_Y.
+Removed top 1 bits (of 3) from wire uart_rx.n_fsm_state.
+
+2.8. Executing PEEPOPT pass (run peephole optimizers).
+
+2.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+2.10. Executing TECHMAP pass (map to technology primitives).
+
+2.10.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+2.10.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~132 debug messages>
+
+2.11. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module uart_rx:
+  creating $macc model for $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:127$43 ($add).
+  creating $macc model for $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:147$54 ($add).
+  creating $macc model for $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:69$13 ($add).
+  creating $alu model for $macc $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:69$13.
+  creating $alu model for $macc $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:147$54.
+  creating $alu model for $macc $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:127$43.
+  creating $alu cell for $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:127$43: $auto$alumacc.cc:474:replace_alu$212
+  creating $alu cell for $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:147$54: $auto$alumacc.cc:474:replace_alu$215
+  creating $alu cell for $add$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:69$13: $auto$alumacc.cc:474:replace_alu$218
+  created 3 $alu and 0 $macc cells.
+
+2.12. Executing SHARE pass (SAT-based resource sharing).
+
+2.13. Executing OPT pass (performing simple optimizations).
+
+2.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~17 debug messages>
+
+2.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_rx.
+Performed a total of 0 changes.
+
+2.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.13.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.13.9. Finished OPT passes. (There is nothing left to do.)
+
+2.14. Executing FSM pass (extract and optimize FSM).
+
+2.14.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register uart_rx.fsm_state.
+
+2.14.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\fsm_state' from module `\uart_rx'.
+  found $dff cell for state register: $procdff$200
+  root of input selection tree: $0\fsm_state[2:0]
+  found reset state: 3'000 (guessed from mux tree)
+  found ctrl input: \resetn
+  found state code: 3'000
+  found ctrl input: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:146$52_Y
+  found ctrl input: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:113$36_Y
+  found ctrl input: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:144$49_Y
+  found ctrl input: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:111$35_Y
+  found ctrl input: \next_bit
+  found state code: 3'011
+  found ctrl input: \payload_done
+  found state code: 3'010
+  found state code: 3'001
+  found ctrl input: \rxd_reg
+  found ctrl output: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:113$36_Y
+  found ctrl output: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:111$35_Y
+  found ctrl output: $ne$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:124$40_Y
+  found ctrl output: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:144$49_Y
+  found ctrl output: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:146$52_Y
+  ctrl inputs: { \payload_done \next_bit \resetn \rxd_reg }
+  ctrl outputs: { $0\fsm_state[2:0] $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:146$52_Y $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:144$49_Y $ne$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:124$40_Y $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:111$35_Y $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:113$36_Y }
+  transition:      3'000 4'--0- ->      3'000 8'00000110
+  transition:      3'000 4'--10 ->      3'001 8'00100110
+  transition:      3'000 4'--11 ->      3'000 8'00000110
+  transition:      3'010 4'--0- ->      3'000 8'00000001
+  transition:      3'010 4'0-1- ->      3'010 8'01000001
+  transition:      3'010 4'1-1- ->      3'011 8'01100001
+  transition:      3'001 4'--0- ->      3'000 8'00001100
+  transition:      3'001 4'-01- ->      3'001 8'00101100
+  transition:      3'001 4'-11- ->      3'010 8'01001100
+  transition:      3'011 4'--0- ->      3'000 8'00010100
+  transition:      3'011 4'-01- ->      3'011 8'01110100
+  transition:      3'011 4'-11- ->      3'000 8'00010100
+
+2.14.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\fsm_state$221' from module `\uart_rx'.
+
+2.14.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 7 unused cells and 7 unused wires.
+<suppressed ~8 debug messages>
+
+2.14.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\fsm_state$221' from module `\uart_rx'.
+  Removing unused output signal $0\fsm_state[2:0] [0].
+  Removing unused output signal $0\fsm_state[2:0] [1].
+  Removing unused output signal $0\fsm_state[2:0] [2].
+
+2.14.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\fsm_state$221' from module `\uart_rx' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ---1
+  010 -> --1-
+  001 -> -1--
+  011 -> 1---
+
+2.14.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\fsm_state$221' from module `\uart_rx':
+-------------------------------------
+
+  Information on FSM $fsm$\fsm_state$221 (\fsm_state):
+
+  Number of input signals:    4
+  Number of output signals:   5
+  Number of state bits:       4
+
+  Input signals:
+    0: \rxd_reg
+    1: \resetn
+    2: \next_bit
+    3: \payload_done
+
+  Output signals:
+    0: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:113$36_Y
+    1: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:111$35_Y
+    2: $ne$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:124$40_Y
+    3: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:144$49_Y
+    4: $eq$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:146$52_Y
+
+  State encoding:
+    0:     4'---1  <RESET STATE>
+    1:     4'--1-
+    2:     4'-1--
+    3:     4'1---
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'--11   ->     0 5'00110
+      1:     0 4'--0-   ->     0 5'00110
+      2:     0 4'--10   ->     2 5'00110
+      3:     1 4'--0-   ->     0 5'00001
+      4:     1 4'0-1-   ->     1 5'00001
+      5:     1 4'1-1-   ->     3 5'00001
+      6:     2 4'--0-   ->     0 5'01100
+      7:     2 4'-11-   ->     1 5'01100
+      8:     2 4'-01-   ->     2 5'01100
+      9:     3 4'--0-   ->     0 5'10100
+     10:     3 4'-11-   ->     0 5'10100
+     11:     3 4'-01-   ->     3 5'10100
+
+-------------------------------------
+
+2.14.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\fsm_state$221' from module `\uart_rx'.
+
+2.15. Executing OPT pass (performing simple optimizations).
+
+2.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+<suppressed ~1 debug messages>
+
+2.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+2.15.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.15.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 0 unused cells and 9 unused wires.
+<suppressed ~1 debug messages>
+
+2.15.5. Finished fast OPT passes.
+
+2.16. Executing MEMORY pass.
+
+2.16.1. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+2.16.2. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.16.3. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+2.16.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.16.5. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.18. Executing OPT pass (performing simple optimizations).
+
+2.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+<suppressed ~12 debug messages>
+
+2.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.18.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+2.18.5. Finished fast OPT passes.
+
+2.19. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+2.20. Executing OPT pass (performing simple optimizations).
+
+2.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+2.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_rx.
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$270: { \fsm_state [0] \fsm_state [2] \fsm_state [3] }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$242: { $auto$fsm_map.cc:74:implement_pattern_cache$236 $auto$fsm_map.cc:118:implement_pattern_cache$234 $auto$fsm_map.cc:118:implement_pattern_cache$240 }
+    Consolidated identical input bits for $mux cell $ternary$/home/omar/research/vulnerable_designs_sky/gpt-4/uart_rx/worked/uart_rx_HT1_gpt-4_A1.v:98$32:
+      Old ports: A=2'11, B=2'00, Y=$auto$wreduce.cc:455:run$210 [1:0]
+      New ports: A=1'1, B=1'0, Y=$auto$wreduce.cc:455:run$210 [0]
+      New connections: $auto$wreduce.cc:455:run$210 [1] = $auto$wreduce.cc:455:run$210 [0]
+  Optimizing cells in module \uart_rx.
+Performed a total of 3 changes.
+
+2.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.20.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.20.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.20.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+<suppressed ~1 debug messages>
+
+2.20.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.20.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \uart_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+2.20.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \uart_rx.
+Performed a total of 0 changes.
+
+2.20.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.20.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.20.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+
+2.20.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.20.16. Finished OPT passes. (There is nothing left to do.)
+
+2.21. Executing TECHMAP pass (map to technology primitives).
+
+2.21.1. Executing Verilog-2005 frontend: <techmap.v>
+Parsing Verilog input from `<techmap.v>' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+2.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=16\Y_WIDTH=16 for cells of type $alu.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=14\Y_WIDTH=14 for cells of type $alu.
+Using template $paramod\_90_pmux\WIDTH=2\S_WIDTH=4 for cells of type $pmux.
+Using template $paramod\_90_alu\A_SIGNED=0\B_SIGNED=0\A_WIDTH=1\B_WIDTH=4\Y_WIDTH=4 for cells of type $alu.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=16 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=14 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=4 for cells of type $lcu.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~663 debug messages>
+
+2.22. Executing OPT pass (performing simple optimizations).
+
+2.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+<suppressed ~211 debug messages>
+
+2.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+<suppressed ~36 debug messages>
+Removed a total of 12 cells.
+
+2.22.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 42 unused cells and 193 unused wires.
+<suppressed ~43 debug messages>
+
+2.22.5. Finished fast OPT passes.
+
+2.23. Executing ABC pass (technology mapping using ABC).
+
+2.23.1. Extracting gate netlist of module `\uart_rx' to `<abc-temp-dir>/input.blif'..
+Extracted 329 gates and 391 wires to a netlist network with 60 inputs and 59 outputs.
+
+2.23.1.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 17 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + retime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+2.23.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        5
+ABC RESULTS:            ANDNOT cells:       68
+ABC RESULTS:              AOI3 cells:        2
+ABC RESULTS:              AOI4 cells:        1
+ABC RESULTS:               MUX cells:       35
+ABC RESULTS:              NAND cells:       28
+ABC RESULTS:               NOR cells:        8
+ABC RESULTS:               NOT cells:       21
+ABC RESULTS:              OAI3 cells:        2
+ABC RESULTS:              OAI4 cells:        6
+ABC RESULTS:                OR cells:       47
+ABC RESULTS:             ORNOT cells:       18
+ABC RESULTS:              XNOR cells:        8
+ABC RESULTS:               XOR cells:       25
+ABC RESULTS:        internal signals:      272
+ABC RESULTS:           input signals:       60
+ABC RESULTS:          output signals:       59
+Removing temp directory.
+
+2.24. Executing OPT pass (performing simple optimizations).
+
+2.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module uart_rx.
+
+2.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\uart_rx'.
+Removed a total of 0 cells.
+
+2.24.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+2.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 0 unused cells and 230 unused wires.
+<suppressed ~4 debug messages>
+
+2.24.5. Finished fast OPT passes.
+
+2.25. Executing HIERARCHY pass (managing design hierarchy).
+
+2.25.1. Analyzing design hierarchy..
+Top module:  \uart_rx
+
+2.25.2. Analyzing design hierarchy..
+Top module:  \uart_rx
+Removed 0 unused modules.
+
+2.26. Printing statistics.
+
+=== uart_rx ===
+
+   Number of wires:                243
+   Number of wire bits:            367
+   Number of public wires:          16
+   Number of public wire bits:      95
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                331
+     $_ANDNOT_                      68
+     $_AND_                          5
+     $_AOI3_                         2
+     $_AOI4_                         1
+     $_DFF_P_                       57
+     $_MUX_                         35
+     $_NAND_                        28
+     $_NOR_                          8
+     $_NOT_                         21
+     $_OAI3_                         2
+     $_OAI4_                         6
+     $_ORNOT_                       18
+     $_OR_                          47
+     $_XNOR_                         8
+     $_XOR_                         25
+
+2.27. Executing CHECK pass (checking for obvious problems).
+checking module uart_rx..
+found and reported 0 problems.
+
+3. Executing Liberty frontend.
+Imported 428 cell types from liberty file.
+
+4. Executing ABC pass (technology mapping using ABC).
+
+4.1. Extracting gate netlist of module `\uart_rx' to `<abc-temp-dir>/input.blif'..
+Extracted 274 gates and 334 wires to a netlist network with 60 inputs and 59 outputs.
+
+4.1.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /home/omar/research/skywater-pdk/libraries/sky130_fd_sc_hd/latest/timing/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.09 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/omar/research/skywater-pdk/libraries/sky130_fd_sc_hd/latest/timing/sky130_fd_sc_hd__tt_025C_1v80.lib" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.13 sec
+ABC: Memory =   16.04 MB. Time =     0.13 sec
+ABC: Warning: Detected 9 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + ifraig 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__and4_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__mux2i_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nor4bb_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__o31a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o32ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or3_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:        1
+ABC RESULTS:        internal signals:      215
+ABC RESULTS:           input signals:       60
+ABC RESULTS:          output signals:       59
+Removing temp directory.
+
+5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \uart_rx..
+Removed 0 unused cells and 335 unused wires.
+<suppressed ~2 debug messages>
+
+6. Executing Verilog backend.
+Dumping module `\uart_rx'.
+
+7. Printing statistics.
+
+=== uart_rx ===
+
+   Number of wires:                159
+   Number of wire bits:            252
+   Number of public wires:          15
+   Number of public wire bits:      63
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                248
+     $_DFF_P_                       57
+     sky130_fd_sc_hd__a211oi_1       1
+     sky130_fd_sc_hd__a21oi_1       28
+     sky130_fd_sc_hd__a311oi_1       2
+     sky130_fd_sc_hd__a31oi_1        2
+     sky130_fd_sc_hd__and2_0         4
+     sky130_fd_sc_hd__and3_1         7
+     sky130_fd_sc_hd__and4_1         4
+     sky130_fd_sc_hd__clkinv_1       8
+     sky130_fd_sc_hd__lpflow_isobufsrc_1      5
+     sky130_fd_sc_hd__mux2i_1        2
+     sky130_fd_sc_hd__nand2_1       19
+     sky130_fd_sc_hd__nand2b_1       2
+     sky130_fd_sc_hd__nand3_1       11
+     sky130_fd_sc_hd__nand3b_1       1
+     sky130_fd_sc_hd__nand4_1        4
+     sky130_fd_sc_hd__nor2_1        32
+     sky130_fd_sc_hd__nor3_1        10
+     sky130_fd_sc_hd__nor3b_1        6
+     sky130_fd_sc_hd__nor4_1         6
+     sky130_fd_sc_hd__nor4b_1        2
+     sky130_fd_sc_hd__nor4bb_1       3
+     sky130_fd_sc_hd__o21ai_0       26
+     sky130_fd_sc_hd__o31a_1         1
+     sky130_fd_sc_hd__o32ai_1        1
+     sky130_fd_sc_hd__or3_1          1
+     sky130_fd_sc_hd__xnor2_1        2
+     sky130_fd_sc_hd__xor2_1         1
+
+End of script. Logfile hash: 4545d027db
+CPU: user 0.44s system 0.02s, MEM: 44.01 MB total, 38.01 MB resident
+Yosys 0.9 (git sha1 1979e0b)
+Time spent: 29% 2x read_liberty (0 sec), 15% 19x opt_clean (0 sec), ...
