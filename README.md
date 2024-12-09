@@ -31,7 +31,7 @@ project_root/
 
 ### Core Files
 - `*_A1.v`: Original HT-inserted RTL
-- `*_cleaned.v`: Cleaned and annotated version
+- `*_cleaned.v`: Cleaned and Unannotated version
 - `*_tb.v`: Testbench for functional verification
 - `*_taxonomy.txt`: HT classification and details
 
