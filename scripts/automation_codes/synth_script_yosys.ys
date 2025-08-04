@@ -1,0 +1,28 @@
+# Read the design
+read_verilog SRAM_32x128_1rw.v
+
+# Synthesize the design
+synth -top SRAM_32x128_1rw
+
+# Map to generic gates
+abc -g gates
+
+# Optimize it
+opt
+#opt_clean -purge
+
+# Clean up
+clean
+
+# Generate netlist
+write_verilog -noattr -norename sram_netlist.v
+
+# Show statistics
+stat
+
+log SRAM_stats.txt
+
+
+
+# Generate a graphical representation (optional)
+#show -format png -prefix sram_diagram

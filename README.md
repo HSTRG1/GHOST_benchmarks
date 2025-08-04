@@ -24,7 +24,18 @@ project_root/
 │   ├── sram/
 │   └── uart/
 ├── models_gemini-1.5-pro-latest/   # Similar structure as gpt-4
-└── llama3-70b-8192/               # Similar structure as gpt-4
+├── llama3-70b-8192/               # Similar structure as gpt-4
+└── scripts/                       # Automation and generation tools
+    ├── LLM_HT_inserter.ipynb      # Main GHOST framework notebook
+    ├── tb_generator_no_api.py     # Testbench generator
+    └── automation_codes/          # Synthesis and analysis scripts
+        ├── compilation_check.py   # Verilog compilation verification
+        ├── get_resource_util.py    # Resource utilization analysis
+        ├── include_submodules.py   # Submodule inclusion utility
+        ├── xilinx_resource_util.py # Xilinx-specific resource analysis
+        ├── synth_script_yosys.ys   # Yosys synthesis script
+        ├── signle_design_synth_sky130.ys # Sky130 synthesis script
+        └── verilog_compilation_results.csv # Compilation results
 ```
 
 ## Files in Each HT Directory
@@ -71,6 +82,28 @@ Example: `HT120` = GPT-4, Type 3 HT, first attempt
 - Logic Synthesis: Yosys 0.9
 - PDK: Google SkyWater 130nm
 - Cell Library: sky130_fd_sc_hd_tt_025C_1v80.lib
+
+## Scripts and Automation Tools
+
+### Main Framework
+- **`LLM_HT_inserter.ipynb`**: Core GHOST framework notebook that interfaces with multiple LLM APIs (GPT-4, Gemini, LLaMA3) to generate hardware Trojans. Includes prompt engineering, response parsing, and file management functionality.
+
+- **`tb_generator_no_api.py`**: Automated testbench generator for hardware Trojan verification. Creates comprehensive test cases without requiring API access.
+
+### Automation Codes
+- **`compilation_check.py`**: Verifies Verilog code compilation using Icarus Verilog. Calculates EvalO (Code Correctness) metrics and generates compilation reports.
+
+- **`get_resource_util.py`**: Analyzes resource utilization from synthesis results. Extracts area, power, and timing metrics from synthesis reports.
+
+- **`include_submodules.py`**: Utility for resolving Verilog `include` directives. Automatically incorporates submodules and dependencies into main design files.
+
+- **`xilinx_resource_util.py`**: Xilinx-specific resource utilization analysis tool for FPGA implementations.
+
+- **`synth_script_yosys.ys`**: Generic Yosys synthesis script for RTL-to-gate level transformation.
+
+- **`signle_design_synth_sky130.ys`**: Sky130 PDK-specific synthesis script for single design processing.
+
+- **`verilog_compilation_results.csv`**: Results database containing compilation status and metrics for all processed designs.
 
 ## Getting Started
 

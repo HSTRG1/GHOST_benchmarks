@@ -1,0 +1,28 @@
+# Read the design
+read_verilog uart.v
+
+# Synthesize the design
+synth -top uart
+
+# Read the liberty file
+read_liberty -lib /home/omar/research/skywater-pdk/libraries/sky130_fd_sc_hd/latest/timing/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Map to Sky130 cells
+abc -liberty /home/omar/research/skywater-pdk/libraries/sky130_fd_sc_hd/latest/timing/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Optimize it
+#opt
+opt_clean -purge
+
+# Clean up
+clean
+
+# Generate netlist
+write_verilog -noattr uart_netlist_sky130.v
+#write_verilog up_counter_synth.v
+
+# Show statistics
+stat
+
+# Generate a graphical representation (optional)
+#show -format png -prefix up_counter_diagram_sky130
