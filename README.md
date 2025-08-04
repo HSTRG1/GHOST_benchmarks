@@ -91,19 +91,13 @@ Example: `HT120` = GPT-4, Type 3 HT, first attempt
 - **`tb_generator_no_api.py`**: Automated testbench generator for hardware Trojan verification. Creates comprehensive test cases without requiring API access.
 
 ### Automation Codes
-- **`compilation_check.py`**: Verifies Verilog code compilation using Icarus Verilog. Calculates EvalO (Code Correctness) metrics and generates compilation reports.
-
-- **`get_resource_util.py`**: Analyzes resource utilization from synthesis results. Extracts area, power, and timing metrics from synthesis reports.
-
+- **`compilation_check.py`**: Verifies Verilog code compilation using Icarus Verilog. 
+- **`get_resource_util.py`**: Analyzes resource utilization from synthesis results. 
 - **`include_submodules.py`**: Utility for resolving Verilog `include` directives. Automatically incorporates submodules and dependencies into main design files.
-
 - **`xilinx_resource_util.py`**: Xilinx-specific resource utilization analysis tool for FPGA implementations.
-
 - **`synth_script_yosys.ys`**: Generic Yosys synthesis script for RTL-to-gate level transformation.
-
 - **`signle_design_synth_sky130.ys`**: Sky130 PDK-specific synthesis script for single design processing.
-
-- **`verilog_compilation_results.csv`**: Results database containing compilation status and metrics for all processed designs.
+- **`verilog_compilation_results.csv`**: Results database containing compilation status for all processed designs.
 
 ## Getting Started
 
