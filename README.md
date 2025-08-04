@@ -88,7 +88,7 @@ Example: `HT120` = GPT-4, Type 3 HT, first attempt
 ### Main Framework
 - **`LLM_HT_inserter.ipynb`**: Core GHOST framework notebook that interfaces with multiple LLM APIs (GPT-4, Gemini, LLaMA3) to generate hardware Trojans. Includes prompt engineering, response parsing, and file management functionality.
 
-- **`tb_generator_no_api.py`**: Automated testbench generator for hardware Trojan verification. Creates comprehensive test cases without requiring API access.
+- **`tb_generator_no_api.py`**: Automated testbench generator for hardware Trojan verification.
 
 ### Automation Codes
 - **`compilation_check.py`**: Verifies Verilog code compilation using Icarus Verilog. 
