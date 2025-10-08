@@ -1,5 +1,0 @@
-File Name,Top Module,LLM Model,HT Type,Total Cells
-sram_HT2_gpt-4_A1.v,SRAM_32x128_1rw,gpt-4,HT2,25589
-sram_HT1_gpt-4_A1.v,SRAM_32x128_1rw,gpt-4,HT1,25724
-sram_HT3_gpt-4_A1.v,SRAM_32x128_1rw,gpt-4,HT3,25573
-sram_HT4_gpt-4_A1.v,SRAM_32x128_1rw,gpt-4,HT4,25588

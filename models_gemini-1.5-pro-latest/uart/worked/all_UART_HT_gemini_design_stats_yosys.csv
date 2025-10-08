@@ -1,4 +1,0 @@
-File Name,Top Module,LLM Model,HT Type,Total Cells
-uart_rx_HT3_models_gemini-1.5-pro-latest_A1.v,uart_rx,models,HT3,321
-uart_rx_HT1_models_gemini-1.5-pro-latest_A1.v,uart_rx,models,HT1,263
-uart_rx_HT4_models_gemini-1.5-pro-latest_A1.v,uart_rx,models,HT4,248

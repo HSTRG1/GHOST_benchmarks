@@ -1,4 +1,0 @@
-File Name,Top Module,LLM Model,HT Type,Total Cells
-uart_rx_HT1_gpt-4_A1.v,uart_rx,gpt-4,HT1,322
-uart_rx_HT4_gpt-4_A1.v,uart_rx,gpt-4,HT4,257
-uart_rx_HT2_gpt-4_A1.v,uart_rx,gpt-4,HT2,289
